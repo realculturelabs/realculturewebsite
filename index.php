@@ -8,7 +8,7 @@
         <div class="space-cow" id="space-cow">                
         </div>
         <div class="container">
-            <center><h4><?php include 'includes/nav_bar.php';?>/</h4></center>
+            <center><h4><?php include 'includes/nav_bar.php';?></h4></center>
             <br>
             <h2 class="four-oh-four-title">a non-situationist journal of<br>the ministry of human potential</h2>                
             <br>
