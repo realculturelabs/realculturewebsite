@@ -1,0 +1,37 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+# SEO friendly: require non-empty HOST header
+RewriteCond %{HTTP_HOST} !^$
+
+RewriteCond %{HTTP_HOST} ^www\.
+RewriteRule ^(.*)$ http://realculture.com/$1 [R=301,L]
+
+# SEO friendly: require case-insensitive HOST to be www.htaccesselite.com
+# RewriteCond %{HTTP_HOST} !^www\.realculture\.com$ [NC]
+
+# 301 redirect everything to correct www.htaccesselite.com
+# RewriteRule ^(.*)$ http://www.realculture.com/$1 [R=301,L]
+
+# or you can use this rewriterule
+# RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+
+DirectoryIndex index.php
+# DirectoryIndex index.php index.html default.htm index.htm
+ErrorDocument 404 /404page.php
+# AddHandler application/x-httpd-php53 php
+# AddHandler application/x-httpd-php53 php
+
+# https://www.digitalocean.com/community/questions/how-to-hide-php-extension-in-url-using-htaccess
+
+# Run Php without filename extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+# Return 404 if original request is .php
+RewriteCond %{THE_REQUEST} "^[^ ]* .*?\.php[? ].*$"
+RewriteRule .* - [L,R=404]
+
+
